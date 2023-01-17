@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.filmaficionado.Controllers.DescriptionMovieMenuController">
+   <children>
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="443.0" prefWidth="374.0">
+         <children>
+            <TextArea fx:id="showDescription" editable="false" focusTraversable="false" layoutX="31.0" layoutY="285.0" pickOnBounds="false" prefHeight="146.0" prefWidth="305.0" />
+            <Label layoutX="31.0" layoutY="268.0" text="Description" />
+            <ImageView fx:id="showPicture" fitHeight="256.0" fitWidth="240.0" layoutX="31.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true" />
+            <VBox layoutX="276.0" layoutY="14.0" prefHeight="50.0" prefWidth="60.0">
+               <children>
+                  <ImageView fx:id="bestInCategoryIcon" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label fx:id="bestInCategoryLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="62.0" textAlignment="CENTER" />
+               </children>
+            </VBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.filmaficionado.Controllers.MainController">
+   <children>
+      <TableView fx:id="tableViewMovies" focusTraversable="false" layoutX="18.0" layoutY="62.0" prefHeight="345.0" prefWidth="964.0">
+        <columns>
+          <TableColumn fx:id="tableViewColumnTitle" prefWidth="220.0" text="Title" />
+            <TableColumn fx:id="tableViewColumnPersonalRating" minWidth="0.0" prefWidth="131.0" text="Personal Rating" />
+          <TableColumn fx:id="tableViewColumnIMDBRating" minWidth="0.0" prefWidth="115.0" text="IMDB Rating" />
+            <TableColumn fx:id="tableViewColumnCategory" minWidth="0.0" prefWidth="203.0" text="Category" />
+            <TableColumn fx:id="tableViewColumnDirector" minWidth="0.0" prefWidth="81.0" text="Director" />
+            <TableColumn fx:id="tableViewColumnActors" minWidth="0.0" prefWidth="129.0" text="Actors" />
+            <TableColumn fx:id="tableViewColumnReleaseDate" minWidth="0.0" prefWidth="84.0" text="Release Date" />
+        </columns>
+         <contextMenu>
+            <ContextMenu>
+              <items>
+                  <MenuItem fx:id="menuEdit" mnemonicParsing="false" onAction="#menuItemEditMovieClicked" text="Edit" />
+                  <MenuItem fx:id="menuDelete" mnemonicParsing="false" onAction="#menuItemDeleteClicked" text="Delete" />
+                  <MenuItem fx:id="menuDescription" mnemonicParsing="false" onAction="#menuItemDescriptionClicked" text="View Description" />
+                  <MenuItem fx:id="menuPlayMovie" mnemonicParsing="false" onAction="#menuItemPlayMovieClicked" text="Play Movie" />
+                  <MenuItem fx:id="menuPlayTrailer" mnemonicParsing="false" onAction="#menuItemPlayTrailerClicked" text="Play Trailer" />
+              </items>
+            </ContextMenu>
+         </contextMenu>
+      </TableView>
+      <TextField fx:id="textFieldSearch" layoutX="834.0" layoutY="25.0" />
+      <Button fx:id="addMovieButton" layoutX="908.0" layoutY="426.0" mnemonicParsing="false" onAction="#addMovieButtonClicked" text="Add Movie" />
+   </children>
+</AnchorPane>

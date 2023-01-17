@@ -1,0 +1,39 @@
+use sunwar01;
+
+
+CREATE TABLE Category (
+    CategoryID INT PRIMARY KEY,
+    name VARCHAR(25)   
+);
+
+CREATE TABLE Movie  (
+    MovieID INT PRIMARY KEY,
+    title VARCHAR(255),
+    personalRating DECIMAL(2,1),
+    imdbRating DECIMAL(2,1),
+    category VARCHAR(255),
+    director VARCHAR(50),
+    actors VARCHAR(255),
+    trailer VARCHAR(255),
+    releaseDate VARCHAR(8),
+    lastViewed INT,
+    picture VARCHAR(255),
+    description VARCHAR(8000)
+);
+
+
+CREATE TABLE Combined(
+        combinedID INT PRIMARY KEY,
+        CategoryID INT,
+        MovieID INT, 
+        FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID),
+        FOREIGN KEY (MovieID) REFERENCES Movie(MovieID)
+);
+
+CREATE TABLE BestCategory(
+        BestCategoryID INT PRIMARY KEY,
+        CategoryID INT,
+        MovieID INT, 
+        FOREIGN KEY (CategoryID) REFERENCES Category(CategoryID),
+        FOREIGN KEY (MovieID) REFERENCES Movie(MovieID)
+);
