@@ -3,7 +3,7 @@ package com.example.filmaficionado.Controllers;
 
 import com.example.filmaficionado.ControlObjects.Movie;
 import com.example.filmaficionado.ControlObjects.MovieDaoImplementation;
-import com.example.filmaficionado.HelloApplication;
+import com.example.filmaficionado.FilmaficionadoApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -48,7 +48,7 @@ public class LowestRatedMoviesPopupController {
 
         Stage primaryStage = new Stage();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Filmaficionado-lowestratedmoviepopup.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FilmaficionadoApplication.class.getResource("Filmaficionado-lowestratedmoviepopup.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         primaryStage.setScene(scene);

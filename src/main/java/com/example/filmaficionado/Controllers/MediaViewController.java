@@ -2,7 +2,7 @@ package com.example.filmaficionado.Controllers;
 
 import java.io.File;
 import java.io.IOException;
-import com.example.filmaficionado.HelloApplication;
+import com.example.filmaficionado.FilmaficionadoApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -49,7 +49,7 @@ public class MediaViewController {
 
         Stage primaryStage = new Stage();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Filmaficionado-mediaview.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FilmaficionadoApplication.class.getResource("Filmaficionado-mediaview.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         primaryStage.setScene(scene);

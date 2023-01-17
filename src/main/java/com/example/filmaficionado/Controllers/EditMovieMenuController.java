@@ -4,7 +4,7 @@ import com.example.filmaficionado.ControlObjects.Category;
 import com.example.filmaficionado.ControlObjects.CategoryDaoImplementation;
 import com.example.filmaficionado.ControlObjects.Movie;
 import com.example.filmaficionado.ControlObjects.MovieDaoImplementation;
-import com.example.filmaficionado.HelloApplication;
+import com.example.filmaficionado.FilmaficionadoApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,7 +15,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+import static com.example.filmaficionado.Controllers.AddMovieMenuController.isNumericInt;
+import static com.example.filmaficionado.Controllers.AddMovieMenuController.isNumericDouble;
 import static com.example.filmaficionado.Controllers.MainController.tableViewMoviesShare;
+
 
 public class EditMovieMenuController {
 
@@ -150,7 +153,7 @@ public class EditMovieMenuController {
 
         Stage primaryStage = new Stage();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Filmaficionado-editmoviemenu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FilmaficionadoApplication.class.getResource("Filmaficionado-editmoviemenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         primaryStage.setScene(scene);
@@ -198,8 +201,81 @@ public class EditMovieMenuController {
 
     }
 
+    public void editMovieErrorHandling(){
+
+
+        if (editPersonalRating.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error!");
+            alert.setHeaderText("No rating is set in personal rating text-field");
+            alert.setContentText("Please give the movie a personal rating.");
+            alert.showAndWait();
+
+        }
+
+        if (editImdbRating.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error!");
+            alert.setHeaderText("No rating is set in imdb rating text-field");
+            alert.setContentText("Please give the movie an imdb rating.");
+            alert.showAndWait();
+
+        }
+        if (editReleaseDate.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error!");
+            alert.setHeaderText("No release date is set in release date text-field");
+            alert.setContentText("Please give the movie a release date. (Only year of release)");
+            alert.showAndWait();
+
+        }
+
+        String personalRatingString = editPersonalRating.getText();
+        String imdbRatingString = editImdbRating.getText();
+        String releaseDateString = editReleaseDate.getText();
+
+        if (isNumericDouble(personalRatingString)) {
+            //Do nothing
+        }else{
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error!");
+            alert.setHeaderText("A char or string is set in personal rating text-field");
+            alert.setContentText("Please give the movie a number from 1-10 as a personal rating ");
+            alert.showAndWait();
+
+        }
+
+        if (isNumericDouble(imdbRatingString)) {
+            //Do nothing
+        }else{
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error!");
+            alert.setHeaderText("A char or string is set in imdb rating text-field");
+            alert.setContentText("Please give the movie a number from 1-10 as a imdb rating ");
+            alert.showAndWait();
+
+        }
+
+        if (isNumericInt(releaseDateString)) {
+            //Do nothing
+        }else{
+
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error!");
+            alert.setHeaderText("A char or string is set in release date text-field");
+            alert.setContentText("Please give the movie a number as release date. (Only year of release)");
+            alert.showAndWait();
+
+        }
+    }
+
+
     @FXML
     public void saveChangesButtonClicked() throws SQLException {
+
+        editMovieErrorHandling();
 
         //Vi er nødt til at formatere vores string, så der er ' på hver side af vores string. Ellers kan databasen ikke finde ud af at ændre det.
 

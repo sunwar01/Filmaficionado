@@ -1,9 +1,8 @@
 package com.example.filmaficionado.Controllers;
 
 
-import com.example.filmaficionado.ControlObjects.Movie;
 import com.example.filmaficionado.ControlObjects.MovieDaoImplementation;
-import com.example.filmaficionado.HelloApplication;
+import com.example.filmaficionado.FilmaficionadoApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -68,7 +67,7 @@ public class DescriptionMovieMenuController {
 
         Stage primaryStage = new Stage();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Filmaficionado-descriptionmoviemenu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FilmaficionadoApplication.class.getResource("Filmaficionado-descriptionmoviemenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         primaryStage.setScene(scene);

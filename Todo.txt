@@ -1,9 +1,9 @@
 
 
-Indsæt 15 fake film
-Tilføj til github
-Lav klassediagram. 
+
+Lav klassediagram færdig. 
 test på bærbar
+
 
 DONE ! 
 

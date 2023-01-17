@@ -1,7 +1,7 @@
 package com.example.filmaficionado.Controllers;
 
 import com.example.filmaficionado.ControlObjects.*;
-import com.example.filmaficionado.HelloApplication;
+import com.example.filmaficionado.FilmaficionadoApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -140,12 +140,126 @@ public void initialize(){
 
 }
 
+    public static boolean isNumericInt(String string) {
+        int intValue;
+
+
+        try {
+            intValue = Integer.parseInt(string);
+            return true;
+            //hvis vi kan parse den som int, så returner vi true, da vi så ved at det er et tal.
+        } catch (NumberFormatException e) {
+
+            //Hvis vi ikke kan parse den som int, så er det ikke et tal
+        }
+        return false;
+    }
+
+    public static boolean isNumericDouble(String string) {
+        double doubleValue;
+
+
+        try {
+            doubleValue = Double.parseDouble(string);
+            return true;
+            //hvis vi kan parse den som double, så returner vi true, da vi så ved at det er et tal.
+        } catch (NumberFormatException e) {
+
+            //Hvis vi ikke kan parse den som double, så er det ikke et tal
+        }
+        return false;
+    }
+
+
+public void addMovieErrorHandling(){
+
+
+ if (personalRatingTextfield.getText().equals("")){
+     Alert alert = new Alert(Alert.AlertType.ERROR);
+     alert.setTitle("Error!");
+     alert.setHeaderText("No rating is set in personal rating text-field");
+     alert.setContentText("Please give the movie a personal rating.");
+     alert.showAndWait();
+
+ }
+
+ if (imdbRatingTextfield.getText().equals("")){
+     Alert alert = new Alert(Alert.AlertType.ERROR);
+     alert.setTitle("Error!");
+     alert.setHeaderText("No rating is set in imdb rating text-field");
+     alert.setContentText("Please give the movie an imdb rating.");
+     alert.showAndWait();
+
+ }
+ if (releaseDateTextfield.getText().equals("")){
+     Alert alert = new Alert(Alert.AlertType.ERROR);
+     alert.setTitle("Error!");
+     alert.setHeaderText("No release date is set in release date text-field");
+     alert.setContentText("Please give the movie a release date. (Only year of release)");
+     alert.showAndWait();
+
+ }
+
+ String personalRatingString = personalRatingTextfield.getText();
+ String imdbRatingString = imdbRatingTextfield.getText();
+ String releaseDateString = releaseDateTextfield.getText();
+
+ if (isNumericDouble(personalRatingString)) {
+     //Do nothing
+ }else{
+
+     Alert alert = new Alert(Alert.AlertType.ERROR);
+     alert.setTitle("Error!");
+     alert.setHeaderText("A char or string is set in personal rating text-field");
+     alert.setContentText("Please give the movie a number from 1-10 as a personal rating ");
+     alert.showAndWait();
+
+ }
+
+ if (isNumericDouble(imdbRatingString)) {
+     //Do nothing
+ }else{
+
+     Alert alert = new Alert(Alert.AlertType.ERROR);
+     alert.setTitle("Error!");
+     alert.setHeaderText("A char or string is set in imdb rating text-field");
+     alert.setContentText("Please give the movie a number from 1-10 as a imdb rating ");
+     alert.showAndWait();
+
+ }
+
+ if (isNumericInt(releaseDateString)) {
+     //Do nothing
+ }else{
+
+     Alert alert = new Alert(Alert.AlertType.ERROR);
+     alert.setTitle("Error!");
+     alert.setHeaderText("A char or string is set in release date text-field");
+     alert.setContentText("Please give the movie a number as release date. (Only year of release)");
+     alert.showAndWait();
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
 
     public void createAddMovieWindow() throws IOException {
 
         Stage primaryStage = new Stage();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Filmaficionado-addmoviemenu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(FilmaficionadoApplication.class.getResource("Filmaficionado-addmoviemenu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
 
@@ -262,6 +376,9 @@ public void initialize(){
 
     @FXML
     public void addMovieButtonContextMenuClicked()  {
+
+        addMovieErrorHandling();
+
 
         LinkedList<Category> categorylist = new LinkedList<>();
         for (Category category : listviewCategoriesForMovie.getItems()) {
